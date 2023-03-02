@@ -21,12 +21,20 @@ class _HomePageState extends State<HomePage> {
         child: Center(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.all(10.0),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: NetworkImage(
-                    'https://avatars.githubusercontent.com/u/64529996?v=4',
+                  radius: 58,
+                  backgroundColor: Colors.white38,
+                  child: CircleAvatar(
+                    radius: 56,
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    child: const CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(
+                        'https://avatars.githubusercontent.com/u/64529996?v=4',
+                      ),
+                    ),
                   ),
                 ),
               ),
