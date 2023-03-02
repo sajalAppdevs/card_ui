@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String bgCard = 'images/bg1.png';
+  bool btn1 = true;
+  bool btn2 = false;
+  bool btn3 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,10 +61,10 @@ class HomePage extends StatelessWidget {
                 //padding: const EdgeInsets.all(10.0),
                 width: double.infinity,
                 height: 230,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      'images/bg1.png',
+                      bgCard,
                     ),
                   ),
                 ),
@@ -135,10 +144,17 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: 70,
+                    height: btn1 ? 70 : 55,
                     width: 70,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          bgCard = 'images/bg1.png';
+                          btn1 = true;
+                          btn2 = false;
+                          btn3 = false;
+                        });
+                      },
                       icon: const Image(
                         image: AssetImage(
                           'images/btn1.png',
@@ -147,10 +163,17 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 70,
+                    height: btn2 ? 70 : 55,
                     width: 70,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          bgCard = 'images/bg2.png';
+                          btn1 = false;
+                          btn2 = true;
+                          btn3 = false;
+                        });
+                      },
                       icon: const Image(
                         image: AssetImage(
                           'images/btn2.png',
@@ -159,10 +182,17 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 70,
+                    height: btn3 ? 70 : 55,
                     width: 70,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          bgCard = 'images/bg3.png';
+                          btn1 = false;
+                          btn2 = false;
+                          btn3 = true;
+                        });
+                      },
                       icon: const Image(
                         image: AssetImage(
                           'images/btn3.png',
@@ -172,19 +202,31 @@ class HomePage extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 90,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff21222D),
+                  backgroundColor: const Color(0xff21222D),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
                       20.0,
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text(
+                        'Your Card is Saved!',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.only(
                     left: 100.0,
