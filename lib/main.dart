@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Credit Card Mobile App UI',
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }

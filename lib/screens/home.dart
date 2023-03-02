@@ -128,20 +128,80 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              // ElevatedButton(
-              //     onPressed: () {},
-              //     child: Container(
-              //       height: 10,
-              //       width: 20,
-              //       decoration: BoxDecoration(
-              //         shape: BoxShape.circle,
-              //         image: DecorationImage(
-              //           image: AssetImage(
-              //             'images/btn1.png',
-              //           ),
-              //         ),
-              //       ),
-              //     )),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 70,
+                    width: 70,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Image(
+                        image: AssetImage(
+                          'images/btn1.png',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    width: 70,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Image(
+                        image: AssetImage(
+                          'images/btn2.png',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    width: 70,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Image(
+                        image: AssetImage(
+                          'images/btn3.png',
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 90,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff21222D),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      20.0,
+                    ),
+                  ),
+                ),
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 100.0,
+                    right: 100.0,
+                    top: 20,
+                    bottom: 20,
+                  ),
+                  child: Text(
+                    'Save My Card',
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
