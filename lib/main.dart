@@ -8,10 +8,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: const Color(0xff161621)),
       title: 'Credit Card Mobile App UI',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

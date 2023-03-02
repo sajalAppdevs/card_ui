@@ -16,11 +16,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff161621),
+      //backgroundColor: const Color(0xff161621),
       body: SafeArea(
         child: Center(
           child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Padding(
                 padding: EdgeInsets.all(10.0),
@@ -58,7 +57,6 @@ class _HomePageState extends State<HomePage> {
                 height: 50,
               ),
               Container(
-                //padding: const EdgeInsets.all(10.0),
                 width: double.infinity,
                 height: 230,
                 decoration: BoxDecoration(
@@ -143,7 +141,7 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     height: btn1 ? 70 : 55,
                     width: 70,
                     child: IconButton(
@@ -162,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: btn2 ? 70 : 55,
                     width: 70,
                     child: IconButton(
@@ -181,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: btn3 ? 70 : 55,
                     width: 70,
                     child: IconButton(
@@ -216,11 +214,14 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'Your Card is Saved!',
+                    SnackBar(
+                      //backgroundColor: Color(0xff161621),
+                      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                      content: const Text(
+                        'Your Card is Saved ✅',
                         style: TextStyle(
-                          fontSize: 15.0,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w900,
                         ),
                         textAlign: TextAlign.center,
                       ),
