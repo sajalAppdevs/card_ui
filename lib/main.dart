@@ -1,4 +1,4 @@
-import 'package:card_ui/screens/home.dart';
+import 'package:card_ui/home/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());

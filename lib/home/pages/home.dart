@@ -1,5 +1,6 @@
+import 'package:card_ui/utils/constants.dart';
+import 'package:card_ui/home/widgets/color_button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,21 +46,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Text(
                   'Open New Card',
-                  style: GoogleFonts.inter(
-                    color: Colors.white,
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: headerTextStyle,
                 ),
               ),
               Text(
                 'Build your wealth easily with our\ninternational interest rate',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.inter(
-                  color: Colors.white70,
-                  height: 1.48,
-                  fontSize: 18.0,
-                ),
+                style: subHeading,
               ),
               const SizedBox(
                 height: 50,
@@ -96,13 +89,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Text(
                           '\$15,500,000',
-                          style: GoogleFonts.inter(
-                            color: const Color(
-                              0xff161621,
-                            ),
-                            fontSize: 36,
-                            fontWeight: FontWeight.w900,
-                          ),
+                          style: cardTextHead,
                         ),
                       ),
                       Padding(
@@ -114,26 +101,14 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               '**** **** **** 1996',
-                              style: GoogleFonts.inter(
-                                color: const Color(
-                                  0xff161621,
-                                ),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: cardNumber,
                             ),
                             const Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(right: 40),
                               child: Text(
                                 '08/30',
-                                style: GoogleFonts.inter(
-                                  color: const Color(
-                                    0xff161621,
-                                  ),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                style: cardDate,
                               ),
                             ),
                           ],
@@ -149,88 +124,57 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: btn1 ? 70 : 55,
-                    width: 70,
-                    child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          bgCard = 'images/bg1.png';
-                          btn1 = true;
-                          btn2 = false;
-                          btn3 = false;
-                        });
-                      },
-                      icon: const Image(
-                        image: AssetImage(
-                          'images/btn1.png',
-                        ),
-                      ),
-                    ),
+                  ColorButton(
+                    onTap: () {
+                      setState(() {
+                        bgCard = 'images/bg1.png';
+                        btn1 = true;
+                        btn2 = false;
+                        btn3 = false;
+                      });
+                    },
+                    isSelected: btn1,
+                    img: 'images/btn1.png',
                   ),
-                  SizedBox(
-                    height: btn2 ? 70 : 55,
-                    width: 70,
-                    child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          bgCard = 'images/bg2.png';
-                          btn1 = false;
-                          btn2 = true;
-                          btn3 = false;
-                        });
-                      },
-                      icon: const Image(
-                        image: AssetImage(
-                          'images/btn2.png',
-                        ),
-                      ),
-                    ),
+                  ColorButton(
+                    onTap: () {
+                      setState(() {
+                        bgCard = 'images/bg2.png';
+                        btn1 = false;
+                        btn2 = true;
+                        btn3 = false;
+                      });
+                    },
+                    isSelected: btn2,
+                    img: 'images/btn2.png',
                   ),
-                  SizedBox(
-                    height: btn3 ? 70 : 55,
-                    width: 70,
-                    child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          bgCard = 'images/bg3.png';
-                          btn1 = false;
-                          btn2 = false;
-                          btn3 = true;
-                        });
-                      },
-                      icon: const Image(
-                        image: AssetImage(
-                          'images/btn3.png',
-                        ),
-                      ),
-                    ),
-                  )
+                  ColorButton(
+                    onTap: () {
+                      setState(() {
+                        bgCard = 'images/bg3.png';
+                        btn1 = false;
+                        btn2 = false;
+                        btn3 = true;
+                      });
+                    },
+                    isSelected: btn3,
+                    img: 'images/btn3.png',
+                  ),
                 ],
               ),
               const SizedBox(
                 height: 90,
               ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff21222D),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      20.0,
-                    ),
-                  ),
-                ),
+                style: saveCard,
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       //backgroundColor: Color(0xff161621),
                       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                      content: const Text(
+                      content: Text(
                         'Your Card is Saved ✅',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w900,
-                        ),
+                        style: snackbarText,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -245,11 +189,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Text(
                     'Save My Card',
-                    style: GoogleFonts.inter(
-                      color: Colors.white,
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: saveCardTextStyle,
                   ),
                 ),
               )
