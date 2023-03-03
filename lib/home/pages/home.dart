@@ -1,6 +1,8 @@
+import 'package:card_ui/home/bloc/home_bloc.dart';
 import 'package:card_ui/utils/constants.dart';
 import 'package:card_ui/home/widgets/color_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,10 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String bgCard = 'images/bg1.png';
-  bool btn1 = true;
-  bool btn2 = false;
-  bool btn3 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,110 +55,124 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 50,
               ),
-              Container(
-                width: double.infinity,
-                height: 230,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      bgCard,
-                    ),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(22.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      const Image(
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  return Container(
+                    width: double.infinity,
+                    height: 230,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
                         image: AssetImage(
-                          'images/cc.png',
-                        ),
-                        width: 140,
-                        height: 35,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 40.0,
-                          top: 30,
-                        ),
-                        child: Text(
-                          '\$15,500,000',
-                          style: cardTextHead,
+                          state.imgUrl,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 40.0,
-                          top: 45.0,
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              '**** **** **** 1996',
-                              style: cardNumber,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(22.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          const Image(
+                            image: AssetImage(
+                              'images/cc.png',
                             ),
-                            const Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 40),
-                              child: Text(
-                                '08/30',
-                                style: cardDate,
-                              ),
+                            width: 140,
+                            height: 35,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 40.0,
+                              top: 30,
                             ),
-                          ],
-                        ),
+                            child: Text(
+                              '\$1,500,000',
+                              style: cardTextHead,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 40.0,
+                              top: 45.0,
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  '**** **** **** 1996',
+                                  style: cardNumber,
+                                ),
+                                const Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 40),
+                                  child: Text(
+                                    '08/30',
+                                    style: cardDate,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ColorButton(
-                    onTap: () {
-                      setState(() {
-                        bgCard = 'images/bg1.png';
-                        btn1 = true;
-                        btn2 = false;
-                        btn3 = false;
-                      });
-                    },
-                    isSelected: btn1,
-                    img: 'images/btn1.png',
-                  ),
-                  ColorButton(
-                    onTap: () {
-                      setState(() {
-                        bgCard = 'images/bg2.png';
-                        btn1 = false;
-                        btn2 = true;
-                        btn3 = false;
-                      });
-                    },
-                    isSelected: btn2,
-                    img: 'images/btn2.png',
-                  ),
-                  ColorButton(
-                    onTap: () {
-                      setState(() {
-                        bgCard = 'images/bg3.png';
-                        btn1 = false;
-                        btn2 = false;
-                        btn3 = true;
-                      });
-                    },
-                    isSelected: btn3,
-                    img: 'images/btn3.png',
-                  ),
-                ],
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ColorButton(
+                        onTap: () {
+                          context.read<HomeBloc>().add(
+                                ButtonClickedEvent(
+                                  imgUrl: 'images/bg1.png',
+                                  btn1: true,
+                                  btn2: false,
+                                  btn3: false,
+                                ),
+                              );
+                        },
+                        isSelected: state.btn1,
+                        img: 'images/btn1.png',
+                      ),
+                      ColorButton(
+                        onTap: () {
+                          context.read<HomeBloc>().add(
+                                ButtonClickedEvent(
+                                  imgUrl: 'images/bg2.png',
+                                  btn1: false,
+                                  btn2: true,
+                                  btn3: false,
+                                ),
+                              );
+                        },
+                        isSelected: state.btn2,
+                        img: 'images/btn2.png',
+                      ),
+                      ColorButton(
+                        onTap: () {
+                          context.read<HomeBloc>().add(
+                                ButtonClickedEvent(
+                                  imgUrl: 'images/bg3.png',
+                                  btn1: false,
+                                  btn2: false,
+                                  btn3: true,
+                                ),
+                              );
+                        },
+                        isSelected: state.btn3,
+                        img: 'images/btn3.png',
+                      ),
+                    ],
+                  );
+                },
               ),
               const SizedBox(
                 height: 90,
